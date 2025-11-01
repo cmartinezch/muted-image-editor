@@ -19,9 +19,10 @@ interface ImageDisplayProps {
   imageUrl: string | null;
   isLoading?: boolean;
   onReset?: () => void;
+  onResetEdits?: () => void;
 }
 
-const ImageDisplay: React.FC<ImageDisplayProps> = ({ title, imageUrl, isLoading = false, onReset }) => {
+const ImageDisplay: React.FC<ImageDisplayProps> = ({ title, imageUrl, isLoading = false, onReset, onResetEdits }) => {
   return (
     <div className="flex flex-col gap-4">
         <div className="flex justify-between items-center">
@@ -32,6 +33,14 @@ const ImageDisplay: React.FC<ImageDisplayProps> = ({ title, imageUrl, isLoading 
                   className="text-sm text-muted hover:text-foreground transition duration-200"
                 >
                   Change Image
+                </button>
+            )}
+            {onResetEdits && (
+                <button
+                  onClick={onResetEdits}
+                  className="text-sm text-muted hover:text-foreground transition duration-200"
+                >
+                  Reset Edits
                 </button>
             )}
         </div>

@@ -222,7 +222,17 @@ const App: React.FC = () => {
     }, 500); // 500ms debounce
   };
 
-  const reset = () => {
+  const handleResetEdits = () => {
+    setEditedImage(null);
+    setSelectedPreset(null);
+    setAppliedPreset(null);
+    setIntensity(100);
+    setError(null);
+    if (intensityDebounceTimeout.current) clearTimeout(intensityDebounceTimeout.current);
+    if (confirmationTimeout.current) clearTimeout(confirmationTimeout.current);
+  };
+
+  const resetApp = () => {
     setOriginalImage(null);
     setEditedImage(null);
     setError(null);
@@ -241,8 +251,8 @@ const App: React.FC = () => {
         ) : (
           <div className="flex flex-col gap-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-              <ImageDisplay title="Original" imageUrl={originalImage.dataUrl} onReset={reset} />
-              <ImageDisplay title="Edited" imageUrl={editedImage} isLoading={isLoading && !editedImage} />
+              <ImageDisplay title="Original" imageUrl={originalImage.dataUrl} onReset={resetApp} />
+              <ImageDisplay title="Edited" imageUrl={editedImage} isLoading={isLoading && !editedImage} onResetEdits={editedImage ? handleResetEdits : undefined} />
             </div>
 
             {error && (
