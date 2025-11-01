@@ -1,0 +1,5 @@
+{
+  "name": "Muted Image Editor",
+  "description": "An application to edit images using a curated set of unique Muted filters, powered by the Gemini 2.5 Flash Image model. Upload an image and select from a range of poetic and advanced presets like Coastal Haze, Cyberpunk Glow, or Dutch Master to instantly transform your photos.",
+  "requestFramePermissions": []
+}
